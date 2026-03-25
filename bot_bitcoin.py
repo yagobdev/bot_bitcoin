@@ -3,15 +3,19 @@ import ssl
 import json
 import bitstamp.client
 
+
 def cliente(): 
-    trading_client = bitstamp.client.Trading(
-    username='999999', key='xxx', secret='xxx')    
+    return bitstamp.client.Trading(username='999999', key='xxx', secret='xxx')    
 
-def comprar_btc():
-    print('Bitcoin comprada!')
 
-def vender_btc():
-    print('Bitcoin vendida!')
+def comprar_btc(quantidade):
+    tranding_client = cliente()
+    tranding_client.buy_market_order(quantidade)
+
+
+def vender_btc(quantidade):
+    tranding_client = cliente()
+    tranding_client.sell_market_order(quantidade)
 
 
 def ao_abrir(ws):
@@ -26,11 +30,14 @@ def ao_abrir(ws):
 '''
     ws.send(json_subscribe) 
 
+
 def on_close(ws, close_status_code, close_msg):
     print(f"Conexão fechada: {close_status_code} - {close_msg}")
 
+
 def erro(ws, error):
     print('Deu error')        
+
 
 def ao_receber_mensagem(ws, mensagem):
     msg = json.loads(mensagem)
@@ -44,6 +51,8 @@ def ao_receber_mensagem(ws, mensagem):
         comprar_btc()
     else:
         print('Aguardar')    
+
+
 
 if __name__ == '__main__':
     ws = websocket.WebSocketApp('wss://ws.bitstamp.net',
