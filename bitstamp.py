@@ -33,9 +33,9 @@ def ao_receber_mensagem(ws, mensagem):
         return
     price = msg['data']['price']
     print(price)
-    if price > 69000:
+    if price > 71500:
         vender_btc()
-    elif price < 68500:
+    elif price < 70500:
         comprar_btc()
     else:
         print('Aguardar')    
