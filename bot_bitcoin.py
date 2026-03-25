@@ -2,10 +2,10 @@ import websocket
 import ssl
 import json
 import bitstamp.client
-
+import credenciais
 
 def cliente(): 
-    return bitstamp.client.Trading(username='999999', key='xxx', secret='xxx')    
+    return bitstamp.client.Trading(username=credenciais.USERNAME, key=credenciais.KEY, secret=credenciais.SECRET)    
 
 
 def comprar_btc(quantidade):
@@ -37,7 +37,6 @@ def on_close(ws, close_status_code, close_msg):
 
 def erro(ws, error):
     print('Deu error')        
-
 
 def ao_receber_mensagem(ws, mensagem):
     msg = json.loads(mensagem)
