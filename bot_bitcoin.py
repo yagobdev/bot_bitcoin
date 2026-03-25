@@ -1,12 +1,17 @@
 import websocket
 import ssl
 import json
+import bitstamp.client
+
+def cliente(): 
+    trading_client = bitstamp.client.Trading(
+    username='999999', key='xxx', secret='xxx')    
 
 def comprar_btc():
     print('Bitcoin comprada!')
 
 def vender_btc():
-    print('Bitcoin vendido!')
+    print('Bitcoin vendida!')
 
 
 def ao_abrir(ws):
