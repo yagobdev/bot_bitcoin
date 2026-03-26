@@ -1,6 +1,7 @@
 import websocket
 import ssl
 import json
+
 import bitstamp.client
 import credenciais
 
