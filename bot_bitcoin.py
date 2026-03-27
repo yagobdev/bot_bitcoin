@@ -39,6 +39,7 @@ def on_close(ws, close_status_code, close_msg):
 def erro(ws, error):
     print('Deu error')        
 
+
 def ao_receber_mensagem(ws, mensagem):
     msg = json.loads(mensagem)
     if msg.get('event') != 'trade':
@@ -46,9 +47,9 @@ def ao_receber_mensagem(ws, mensagem):
     price = msg['data']['price']
     print(price)
     if price > 71500:
-        vender_btc()
+        vender_btc(price)
     elif price < 70500:
-        comprar_btc()
+        comprar_btc(price)
     else:
         print('Aguardar')    
 
